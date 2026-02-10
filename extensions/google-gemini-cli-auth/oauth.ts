@@ -73,8 +73,38 @@ export function extractGeminiCliCredentials(): { clientId: string; clientSecret:
     const geminiCliDir = dirname(dirname(resolvedPath));
 
     const searchPaths = [
+      // Standard local install
       join(
         geminiCliDir,
+        "node_modules",
+        "@google",
+        "gemini-cli-core",
+        "dist",
+        "src",
+        "code_assist",
+        "oauth2.js",
+      ),
+      // Global install on Windows (npm dir)
+      join(
+        geminiCliDir,
+        "npm",
+        "node_modules",
+        "@google",
+        "gemini-cli",
+        "node_modules",
+        "@google",
+        "gemini-cli-core",
+        "dist",
+        "src",
+        "code_assist",
+        "oauth2.js",
+      ),
+      // Another global layout
+      join(
+        geminiCliDir,
+        "node_modules",
+        "@google",
+        "gemini-cli",
         "node_modules",
         "@google",
         "gemini-cli-core",
